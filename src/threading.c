@@ -781,7 +781,7 @@ void THREAD_CREATE( THREAD_T* ref, THREAD_RETURN_T (*func)( void*), void* data, 
 		// "The specified scheduling parameters are only used if the scheduling
 		//  parameter inheritance attribute is PTHREAD_EXPLICIT_SCHED."
 		//
-		PT_CALL( pthread_attr_setinheritsched( &a, PTHREAD_EXPLICIT_SCHED));
+		// PT_CALL( pthread_attr_setinheritsched( &a, PTHREAD_EXPLICIT_SCHED));
 
 #ifdef _PRIO_SCOPE
 		PT_CALL( pthread_attr_setscope( &a, _PRIO_SCOPE));
@@ -931,15 +931,15 @@ bool_t THREAD_WAIT( THREAD_T *ref, double secs , SIGNAL_T *signal_ref, MUTEX_T *
   }
 	//
   void THREAD_KILL( THREAD_T *ref ) {
-    pthread_cancel( *ref );
+    // pthread_cancel( *ref );
   }
 
 	void THREAD_MAKE_ASYNCH_CANCELLABLE()
 	{
 		// that's the default, but just in case...
-		pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+		// pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 		// we want cancellation to take effect immediately if possible, instead of waiting for a cancellation point (which is the default)
-		pthread_setcanceltype( PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+		// pthread_setcanceltype( PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
 	}
 
 	void THREAD_SETNAME( char const* _name)
